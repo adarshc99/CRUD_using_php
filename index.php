@@ -22,9 +22,9 @@ include 'header.php';
                 {
                     die("connection Failed ".mysqli_connect_error());
                 }
-                $sql = "SELECT * FROM student 
+                $sql = "SELECT * FROM student  
                         JOIN studentclass 
-                        WHERE student.SClass = studentclass.Cid";
+                        WHERE student.SClass = studentclass.Cid ORDER BY Sid ASC";
                 $result = mysqli_query($conn,$sql);
                 if(mysqli_num_rows($result) > 0)
                 {
@@ -39,7 +39,7 @@ include 'header.php';
                 <td><?php echo $row['SPhone'] ?></td>
                 <td>
                     <a href="edit.php?id=<?php  echo $row['Sid']?>">Edit</a>
-                    <a href='delete-inline.php'>Delete</a>
+                    <a href='delete-inline.php?id=<?php echo $row['Sid'] ?>'>Delete</a>
                 </td>
             </tr>
             <?php }
